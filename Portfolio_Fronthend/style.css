@@ -98,6 +98,7 @@ body {
 
 .hero-text {
     flex: 1.2;
+    text-align: justify;
 }
 
 .hero-image {
@@ -227,6 +228,7 @@ h1 {
     padding: 1.5rem;
     border: 1px solid #263752;
     transition: transform 0.2s, border-color 0.2s;
+    text-align: justify;
 }
 
 .project-card:hover {
@@ -311,6 +313,7 @@ h1 {
 .exp-desc {
     color: #C0D0F0;
     font-size: 0.9rem;
+    
 }
 
 /* contact */
