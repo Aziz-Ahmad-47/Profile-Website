@@ -9,12 +9,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+    emailjs.init({
+        publicKey: "HCO2I-VpGrgFMIXza"
+    });
+</script>
+
 <body>
 <div class="glow-bg"></div>
 <div class="noise"></div>
 
 <nav class="container navbar">
-  <div class="logo"><a href="#">✦ AZIZ<span style="color:#81A9F0">AHMAD</span></a></div>
+  <div class="logo"><a href="#">💻 AZIZ<span style="color:#81A9F0; margin-left: 8px;" >AHMAD</span></a></div>
   <div class="nav-links">
     <a href="#home">Home</a>
     <a href="#projects">Projects</a>
@@ -43,8 +52,7 @@
   <section id="certifications" class="container">
     <h2 class="section-title"><i class="fas fa-certificate"></i> certifications & credentials</h2>
     <div class="certs-grid"></div>
-    <!-- brief note: you can edit / replace certificates, add your actual links and descriptions easily -->
-    <!-- <p style="font-size: 0.8rem; text-align: center; margin-top: -0.8rem; opacity: 0.8;"><i class="fas fa-pen"></i> Easily customize — replace titles, links, and descriptions in this section</p> -->
+    
   </section>
 
   <!-- Development Experiences (timeline style) untouched -->
@@ -81,10 +89,10 @@
     <h2 class="section-title"><i class="fas fa-paper-plane"></i> let's connect</h2>
     <div class="contact-wrapper">
       <div class="contact-info">
-        <p><i class="fas fa-envelope"></i> aziz.ahmad@creativetech.com</p>
-        <p><i class="fab fa-github"></i> github.com/azizdev</p>
-        <p><i class="fab fa-linkedin"></i> linkedin.com/in/aziz-ahmad</p>
-        <p><i class="fas fa-map-marker-alt"></i> Berlin / remote · UTC+1</p>
+        <p><i class="fas fa-envelope"></i> azizahmad66850@gmail.com</p>
+        <p><i class="fab fa-github"></i> https://github.com/Aziz-Ahmad-47</p>
+        <p><i class="fab fa-linkedin"></i> https://www.linkedin.com/in/aziz-ahmad-89649a306/</p>
+        <p><i class="fas fa-map-marker-alt"></i> Islamabad, Pakistan</p>
         <div class="social-links">
           <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
           <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
@@ -93,20 +101,50 @@
         </div>
       </div>
       <div class="contact-form">
-        <form id="demo-form" action="#">
-          <div class="form-group">
-            <input type="text" placeholder="Your name" required>
-          </div>
-          <div class="form-group">
-            <input type="email" placeholder="Email address" required>
-          </div>
-          <div class="form-group">
-            <textarea rows="3" placeholder="Tell me about your project or just say hi ✨"></textarea>
-          </div>
-          <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send message</button>
-          <p style="font-size: 0.7rem; margin-top: 1rem; text-align: center; opacity: 0.7;">* demo frontend – your message will be forwarded (simulated)</p>
-        </form>
-      </div>
+ <form id="demo-form">
+
+  <div class="form-group">
+    <input
+      type="text"
+      name="from_name"
+      placeholder="Your name"
+      required
+    >
+  </div>
+
+  <div class="form-group">
+    <input
+      type="text"
+      name="contact"
+      placeholder="Contact number"
+      required
+    >
+  </div>
+
+  <div class="form-group">
+    <input
+      type="email"
+      name="from_email"
+      placeholder="Email address"
+      required
+    >
+  </div>
+
+  <div class="form-group">
+    <textarea
+      name="message"
+      rows="3"
+      placeholder="Tell me about your project or just say hi ✨"
+      required
+    ></textarea>
+  </div>
+
+  <button type="submit" class="submit-btn">
+    <i class="fas fa-paper-plane"></i> Send message
+  </button>
+
+</form>
+</div>
     </div>
   </section>
 </main>
@@ -116,10 +154,6 @@
 </footer>
 
 <!-- Firebase modules and project loader (unchanged) -->
-<!-- <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script> -->
-<!-- <div class="project-icon"><i class="fas fa-code"></i></div> -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -153,7 +187,7 @@
             <h3>${data.title || 'No Title'}</h3>
             <div class="project-tags">
               ${tags.map(tag => `<span>${tag}</span>`).join("")}
-            </div>
+            </div class = "project-desc">
             <p>${data.desc || ''}</p>
             <a href="${data.link || '#'}" class="project-link" target = "_blank">View Project →</a>
           </div>
@@ -271,18 +305,17 @@ async function loadHero() {
       <div class="hero-grid">
 
         <div class="hero-text">
-
-          <h4>
-            <i class="fas fa-code"></i>
-            ${data.subtitle}
-          </h4>
-
-          <h1>
+          
+          <h2>
             ${data.title}
             <span class="hero-highlight">
               ${data.highlight}
             </span>
-          </h1>
+          </h2>
+          <h4>
+            <i class="fas fa-code"></i>
+            ${data.subtitle}
+          </h4>
 
           <p class="hero-desc">
             ${data.description}
@@ -348,19 +381,34 @@ loadHero();
   });
 
   const contactForm = document.getElementById('demo-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const nameInput = contactForm.querySelector('input[type="text"]');
-      const emailInput = contactForm.querySelector('input[type="email"]');
-      if (nameInput.value.trim() === '' || emailInput.value.trim() === '') {
-        alert('✨ Please fill your name and email before sending.');
-        return;
-      }
-      alert(`Thanks ${nameInput.value.trim()}! Your message has been received. I'll reach out soon. (Demo mode)`);
+
+if (contactForm) {
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const nameInput = contactForm.querySelector('input[name="from_name"]');
+    const emailInput = contactForm.querySelector('input[name="from_email"]');
+
+    if (nameInput.value.trim() === '' || emailInput.value.trim() === '') {
+      alert('✨ Please fill your name and email before sending.');
+      return;
+    }
+
+    emailjs.sendForm(
+      'service_z7y7066',
+      'template_napqtcd',
+      contactForm
+    )
+    .then(function () {
+      alert(`Thanks ${nameInput.value.trim()}! Your message has been sent successfully. ✅`);
       contactForm.reset();
+    })
+    .catch(function (error) {
+      console.error('EmailJS Error:', error);
+      alert('❌ Failed to send message. Please try again.');
     });
-  }
+  });
+}
 
   // active nav highlight on scroll (including new certs section)
   const sections = document.querySelectorAll('section[id]');
